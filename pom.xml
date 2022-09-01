@@ -39,6 +39,11 @@
             <version>1.12.290</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
 
     </dependencies>
 

@@ -10,6 +10,8 @@ import com.example.aws_db.domain.AWSDb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
 @Repository
 public class AwsDBRepo {
     @Autowired
@@ -42,5 +44,15 @@ public class AwsDBRepo {
 
     public PaginatedScanList<AWSDb> findAll() {
         return dynamoDBMapper.scan(AWSDb.class, new DynamoDBScanExpression());
+    }
+
+    public PaginatedScanList<AWSDb> query(Map<String, AttributeValue> param, String query) {
+        DynamoDBScanExpression expression =
+                new DynamoDBScanExpression()
+                        .withFilterExpression(query)
+                        .withExpressionAttributeValues(param);
+
+
+        return dynamoDBMapper.scan(AWSDb.class, expression);
     }
 }

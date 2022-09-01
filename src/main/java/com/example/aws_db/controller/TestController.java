@@ -14,16 +14,17 @@ public class TestController {
     private AwsDBRepo awsDBRepo;
 
     @RequestMapping("/create")
-    public String testInsert(){
+    public String testInsert() {
         AWSDb awsDb = new AWSDb();
-        awsDb.setJsonData("created");
+        awsDb.setId("1233333333333333333333333");
+        awsDb.setJsonData("testAutoDetectId");
         awsDBRepo.save(awsDb);
 
         return awsDb.getId();
     }
 
     @RequestMapping("/test")
-    public AWSDb test(){
+    public AWSDb test() {
         AWSDb awsDb = awsDBRepo.getById("f6202d5d-6976-440b-be64-438dfe962df3");
         awsDb.setJsonData("updateByHere");
         awsDBRepo.update("f6202d5d-6976-440b-be64-438dfe962df3", awsDb);

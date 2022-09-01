@@ -40,7 +40,7 @@ public class AwsDBRepo {
         return id;
     }
 
-    public PaginatedScanList<AWSDb> findAll(){
+    public PaginatedScanList<AWSDb> findAll() {
         return dynamoDBMapper.scan(AWSDb.class, new DynamoDBScanExpression());
     }
 }
